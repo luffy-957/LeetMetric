@@ -32,9 +32,9 @@ document.addEventListener("DOMContentLoaded",function(){
             if(!response.ok)
                     throw new Error("Unable to fetch the user details");
             
-            const data=await response.json();
-            console.log("Logging Data",data);
-            displayUserData(data);
+            const parsedData=await response.json();
+            console.log("Logging Data",parsedData);
+            displayUserData(parsedData);
 
             // if(response)
             // {
@@ -62,7 +62,32 @@ document.addEventListener("DOMContentLoaded",function(){
 
     });
 
-    async function displayUserData(data){
+    function updateProgress(solved, total, circle, label) {
+        const progressDegree = (solved/total)*100;
+        circle.style.setProperty("--progress-degree", `${progressDegree}%`);
+        label.textContent = `${solved}/${total}`;
+    }
 
+    async function displayUserData(parsedData){
+        //extract all required data
+        const totalHardQuestions=parsedData.totalHard;
+        const totalEasyQuestions=parsedData.totalEasy;
+        const totalMediumQuestions=parsedData.totalMedium;
+        const totalQuestions=parsedData.totalQuestions;
+        const totalSolved=parsedData.totalSolved;
+        const easySolved=parsedData.easySolved;
+        const mediumSolved=parsedData.mediumSolved;
+        const hardSolved=parsedData.hardSolved;
+        const acceptanceRate=parsedData.acceptanceRate;
+        const ranking=parsedData.ranking;
+        const status=parsedData.status;
+        const message=parsedData.message;
+
+
+        console.log(totalSolved);
+        updateProgress(easySolved,totalEasyQuestions, easyProgressCircle, easyLabel);
+        updateProgress(mediumSolved,totalMediumQuestions, mediumProgressCircle, mediumLabel);
+        updateProgress(hardSolved,totalHardQuestions, hardProgressCircle, hardLabel);
+        // updateProgress(easySolved,totalEasyQuestions, easyProgressCircle, easyLabel);
     }
 });
