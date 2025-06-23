@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded",function(){
             
             const parsedData=await response.json();
             console.log("Logging Data",parsedData);
+            if(parsedData.message=='user does not exist')
+            {
+                alert("Specified user does not exist");
+            }
             displayUserData(parsedData);
 
             // if(response)
