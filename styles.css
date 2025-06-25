@@ -102,3 +102,30 @@ h1{
     position:relative;
     z-index:2;
 }
+.stats-card{
+    display:flex;
+    flex-wrap:wrap;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    justify-content:space-evenly;
+    flex-direction:row;
+    gap:10px;
+
+}
+h3{
+    font-size:0.7rem;
+}
+.card{
+    padding:4px;
+    background: radial-gradient(circle, rgba(155, 223, 242, 1) 20%, rgba(40, 73, 107, 1) 200%);
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+    font-size:medium;
+    width: 200px;
+    flex: 1 1 calc(50% - 20px); /* Flexible width with space for gap */
+    max-width:260px;
+}

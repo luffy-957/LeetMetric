@@ -93,5 +93,21 @@ document.addEventListener("DOMContentLoaded",function(){
         updateProgress(mediumSolved,totalMediumQuestions, mediumProgressCircle, mediumLabel);
         updateProgress(hardSolved,totalHardQuestions, hardProgressCircle, hardLabel);
         // updateProgress(easySolved,totalEasyQuestions, easyProgressCircle, easyLabel);
+        const cardsData=[
+            {label:"Acceptance Rate", value:parsedData.acceptanceRate},
+            {label:"Ranking", value:parsedData.ranking},
+            {label:"reputation",value:parsedData.reputation},
+            {label:"Contribution Points",value:parsedData.contributionPoints}
+        ];
+        console.log("cards data:", cardsData);
+
+        cardStatsContainer.innerHTML=cardsData.map(
+            ({label,value})=>{
+                return `<div class="card">
+                        <h3>${label}</h3>
+                        <span>${value}</span>
+                    </div>`;
+            }
+        ).join("");
     }
 });
